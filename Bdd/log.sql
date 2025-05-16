@@ -23,5 +23,6 @@ CREATE TABLE IF NOT EXISTS log (
     CONSTRAINT log_loueur_fk FOREIGN KEY(idLoueur) REFERENCES loueur(idLoueur))
 ENGINE=INNODB;
 
-INSERT INTO `loueur`(`idLoueur`, `nom`, `mot_de_passe`)
-VALUES ('2000','Admin','Admin');
+INSERT INTO `loueur`(`idLoueur`, `nom`, `mot_de_passe`, `isAdmin`)
+VALUES ('2000','Admin','Admin', '1'),
+       ('3000', 'Loueur', 'Loueur', '0');
