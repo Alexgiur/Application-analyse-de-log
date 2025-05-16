@@ -1,8 +1,27 @@
-ALTER TABLE `loueur` ADD `motdepasse` VARCHAR(255);
-INSERT INTO `loueur`(`id`, `nom`, `appelsKO`, `timeouts`, `motdepasse`) 
-VALUES ('2000','administrateur','0','0','administrateur');
+CREATE DATABASE analyse_log;
+USE analyse_log;
 
-ALTER TABLE `loueur` ADD `pays` VARCHAR(255);
-ALTER TABLE `loueur` ADD `email` VARCHAR(255);
-ALTER TABLE `loueur` ADD `numTel` VARCHAR(255);
-ALTER TABLE `loueur` ADD `date` DATETIME DEFAULT CURRENT_TIMESTAMP;
+DROP TABLE IF EXISTS loueur;
+CREATE TABLE IF NOT EXISTS loueur (
+    `idLoueur` INT,
+    `nom` varchar(40),
+    `mot_de_passe` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+    `pays` varchar(30),
+    `email` varchar(50),
+    `telephone` varchar(255),
+    `isAdmin` tinyint(1) NOT NULL DEFAULT '0',
+    CONSTRAINT loueur_pk PRIMARY KEY(idLoueur))
+ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE IF NOT EXISTS log (
+    idLog INT,
+    erreurKO INT,
+    erreurTimeouts INT,
+    date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    idLoueur INT,
+    CONSTRAINT logs_PK PRIMARY KEY(idLog),
+    CONSTRAINT log_loueur_fk FOREIGN KEY(idLoueur) REFERENCES loueur(idLoueur))
+ENGINE=INNODB;
+
+INSERT INTO `loueur`(`idLoueur`, `nom`, `mot_de_passe`)
+VALUES ('2000','Admin','Admin');
