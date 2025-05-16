@@ -4,8 +4,8 @@ session_start();
 use BO\loueur;
 use DAO\loueurDAO;
 
-require_once("model/DAO/connexionMySQL.php");
-require_once("model/DAO/loueurDAO.php");
+require_once("Model/DAO/connexionMySQL.php");
+require_once("Model/DAO/loueurDAO.php");
 
 $dao = new loueurDAO();
 $message_erreur = '';
@@ -202,7 +202,7 @@ if(isset($_GET['deco'])){
 }
 
 // Inclusion des vues
-include 'view/header.php';
+include 'View/header.php';
 
 if($vue == 'connexion') {
     include 'View/connexion.php';
@@ -238,4 +238,4 @@ if($vue == 'connexion') {
     echo "<p>Action non reconnue.</p>";
 }
 
-include 'view/footer.php';
+include 'View/footer.php';

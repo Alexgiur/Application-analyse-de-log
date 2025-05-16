@@ -1,8 +1,8 @@
 <?php
 namespace DAO;
 
-require_once('model/DAO/ConnexionMySQL.php');
-include('model/BO/loueur.php');
+require_once('Model/DAO/ConnexionMySQL.php');
+include('Model/BO/loueur.php');
 
 class loueurDAO extends ConnexionMySQL {
     public function __construct() {
