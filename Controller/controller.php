@@ -141,7 +141,7 @@ if(isset($_GET['mesStatistiques'])) {
 if(isset($_GET['mesInformations'])) {
         $vue = 'mesInfos';
         $title = 'Mes Informations';
-        $loueur = $ldao->findById($_SESSION['id']);
+        $logs = $ldao->findById($_SESSION['id']);
     }
 
 if(isset($_GET['derniereStatsLoueur'])) {

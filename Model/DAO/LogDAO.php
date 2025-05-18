@@ -49,24 +49,25 @@ class LogDAO extends connexionMySQL{
     }
 
     public function historiqueLoueur(int $id): ?array {
-        $bdd = $this->getBdd();
-        $sql = "SELECT erreurKO, erreurTimeouts FROM log INNER JOIN loueur ON loueur.idLoueur=log.idLoueur WHERE loueur.idLoueur = ? ORDER BY date DESC";
-        $stmt = $this->bdd->prepare($sql);
+        $sql = "SELECT log.idLog as id, loueur.nom as nom, log.date as date, log.erreurKO as appelsKO, log.erreurTimeouts as timeouts FROM log INNER JOIN loueur ON loueur.idLoueur=log.idLoueur WHERE loueur.idLoueur = ? ORDER BY date DESC";
+        $stmt = $this->getBdd()->prepare($sql);
         $stmt->execute([$id]);
 
-        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
+        return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: null;
     }
 
     public function derniereStatsLoueur(int $id): ?array {
-        $bdd = $this->getBdd();
-        $sql = "SELECT SUM(erreurKO), SUM(erreurTimeouts) FROM log INNER JOIN loueur ON loueur.idLoueur=log.idLoueur WHERE loueur.idLoueur = ? AND date >= NOW() - INTERVAL 1 DAY";
-        $stmt = $this->bdd->prepare($sql);
-        $stmt->execute([$id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
-    }
+    $sql = "SELECT log.idLog, loueur.nom, log.date, log.erreurKO as appelsKO, log.erreurTimeouts as timeouts 
+            FROM log INNER JOIN loueur ON loueur.idLoueur = log.idLoueur 
+            WHERE log.idLoueur = ? AND log.date >= CURDATE() - INTERVAL 1 DAY AND log.date < CURDATE() ORDER BY log.date DESC";
+    
+    $stmt = $this->bdd->prepare($sql);
+    $stmt->execute([$id]);
+    
+    return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: null;
+}
 
     public function statsLoueur(int $id): ?array {
-        $bdd = $this->getBdd();
         $sql = "SELECT erreurKO, erreurTimeouts FROM log INNER JOIN loueur ON loueur.idLoueur=log.idLoueur WHERE loueur.idLoueur = ?";
         $stmt = $this->getBdd()->prepare($sql);
         $stmt->execute([$id]);
@@ -75,12 +76,11 @@ class LogDAO extends connexionMySQL{
     }
 
     public function findById(int $id) {
-        $bdd = $this->getBdd();
-        $sql = "SELECT loueur.idLoueur, loueur.nom, loueur.pays, loueur.email, loueur.telephone, log.erreurKO, log.erreurTimeouts FROM log INNER JOIN loueur ON loueur.idLoueur=log.idLoueur WHERE loueur.idLoueur = ?";
+        $sql = "SELECT log.idLog as id, loueur.nom as nom, log.date, log.erreurKO as appelsKO, log.erreurTimeouts as timeouts FROM log INNER JOIN loueur ON loueur.idLoueur=log.idLoueur WHERE loueur.idLoueur = ?";
         $stmt = $this->getBdd()->prepare($sql);
         $stmt->execute([$id]);
 
-        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
+        return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: null;
 
     }
 }
