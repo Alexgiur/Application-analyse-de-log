@@ -1,23 +1,29 @@
 <?php
-include('view/header.php');
-//include('view/creationLoueur.php');
-//include('view/supprLoueur.php');
-//include('view/modifLoueur.php');
+require_once("Controller/controller.php");
+
+//include('view/header.php');
+
 //include('view/connexion.php');
-//include('view/administration.php');
-//include('view/administrateurConnecte.php');
-//include('view/derniereStatsAdmin.php');
-//include('view/derniereStatsLoueur.php');
-//include('view/gestionDesLoueurs.php);
-//include('view/historiqueAdmin.php');
-include('view/historiqueLoueur.php');
-//include('view/lesStats.php');
+
 //include('view/loueurConnecte.php');
-//include('view/mesInformations.php');
 //include('view/mesStats.php');
+//include('view/historiqueLoueur.php');
+//include('view/derniereStatsLoueur.php');
+
+//include('view/mesInformations.php');
+
+//include('view/administrateurConnecte.php');
+//include('view/lesStats.php');
+//include('view/historiqueAdmin.php');
+//include('view/derniereStatsAdmin.php');
 //include('view/statsParLoueur.php');
-//include('view/gestionDesLoueurs.php');
-include('view/footer.php');
+
+//include('view/administration.php');
+//include('view/creationLoueur.php');
+//include('view/modifLoueur.php');
+//include('view/supprLoueur.php');
+
+//include('view/footer.php');
 
 /* L’ensemble des pages doit avoir un design identique.
  Les différents boutons doivent être positionnés au même endroit sur toutes les pages.

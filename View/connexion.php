@@ -22,7 +22,7 @@
 
         <tr>
             <td><br><a href="#"><input class="btn btn-warning" name="btnErase" type="reset" value="Effacer" /></a></td>
-            <td><br><a href="index.php?btnConnexion"><input class="btn btn-primary" name="btnConnexion" type="submit" value="Connexion" /></a></td>
+            <td><br><a href="index.php?btnConnexion&utilisateurConnecte"><input class="btn btn-primary" name="btnConnexion" type="submit" value="Connexion" /></a></td>
         </tr>
     </table>
 </form>
