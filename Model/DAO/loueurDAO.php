@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once('connexionMySQL.php');
 include('model/BO/loueur.php');
 
@@ -8,28 +7,52 @@ class loueurDAO extends connexionMySQL {
         parent::__construct();
     }
 
-    public function connecteUtilisateur($utilisateur) {
-        $res = '';
+    public function connecteUtilisateur($idLoueur, $nom, $mot_de_passe) {
+        $res = null;
         if ($this->bdd) {
-            $sql = 'SELECT * FROM loueur WHERE nom = ?';
+            $sql = 'SELECT * FROM loueur WHERE idLoueur = ? AND nom = ? AND mot_de_passe = ?';
             $result = $this->bdd->prepare($sql);
-            $result->execute( [$utilisateur] );
+            $result->execute( [$idLoueur, $nom, $mot_de_passe]);
+            $data = $result->fetch(PDO::FETCH_ASSOC);
 
-
-            $data = $result->fetch();
-            if($data) {
-                $_SESSION['id'] = intval($data['identifiant']);
-                $_SESSION['nom'] = $data['nom'];
-                $_SESSION['appelsKO'] = intval($data['appelsKO']);
-                $_SESSION['timeouts'] = intval($data['timeouts']);
-                $_SESSION['pays'] = intval($data['pays']);
-                $_SESSION['email'] = intval($data['email']);
-                $_SESSION['numTel'] = intval($data['numTel']);
-                $_SESSION['date'] = intval($data['date']);
-            } else {
-                $res = "Utilisateur incorrect";
+            if($data){
+                $res = $data;
             }
         }
         return $res;
     }
+
+    public function create($loueur) {
+        $sql = 'INSERT INTO loueur (idLoueur,nom,mot_de_passe,pays,email,telephone) VALUES (?,?,?,?,?,?)';
+        $result = $this->bdd->prepare($sql);
+        $result->execute([
+            $loueur->getId(),
+            $loueur->getNom(),
+            $loueur->getMotdepasse(),
+            $loueur->getPays(),
+            $loueur->getEmail(),
+            $loueur->getNumTel(),
+        ]);
+    }
+
+    public function update($loueur) {
+        $sql = 'UPDATE loueur SET nom = ?, mot_de_passe = ?, pays = ?, email = ?, telephone = ? WHERE idLoueur = ?';
+        $result = $this->bdd->prepare($sql);
+        $result->execute([
+            $loueur->getNom(),
+            $loueur->getMotdepasse(),
+            $loueur->getPays(),
+            $loueur->getEmail(),
+            $loueur->getNumTel(),
+            $loueur->getId(),
+        ]);
+    }
+
+    public function delete($id) {
+        $sql = 'DELETE FROM loueur WHERE idLoueur = ?';
+        $result = $this->bdd->prepare($sql);
+        $result->execute([$id]);
+    }
+
+    
 }
