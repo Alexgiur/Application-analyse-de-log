@@ -1,4 +1,4 @@
-<div id="topPage"class="d-flex flex-column min-vh-200">
+<div class="page-wrapper d-flex flex-column min-vh-100">
     <div class="container-fluid flex-grow-1">
         <div class="row">
             <div id="side-bar" class="col-12 col-md-3 col-xl-2 bg-dark text-white p-0 d-flex flex-column">
@@ -29,39 +29,37 @@
                 <header id="head">
                     <h2 class="alert alert-warning"><?php echo htmlspecialchars($_SESSION['loueur_nom']) ?></h2>
                 </header>
-                <h4 id="center">Dernières statistiques</h4>
-                <?php if (isset($logs) && !empty($logs)): ?>
-                    <table class="table table-striped">
-                        <thead>
+                <h4 id="center">Statistiques</h4>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Date</th>
+                        <th>Erreur KO</th>
+                        <th>Erreur Timeouts</th>
+                        <th>Appels KO (Total)</th>
+                        <th>Timeouts (Total)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php if (isset($logs) && !empty($logs) && isset($stats) && !empty($stats)): ?>
                         <tr>
-                            <th>ID</th>
-                            <th>Nom</th>
-                            <th>Date</th>
-                            <th>Erreur KO</th>
-                            <th>Erreur Timeouts</th>
+                            <td><?= htmlspecialchars((string) $logs[0]['id']) ?></td>
+                            <td><?= htmlspecialchars((string) $logs[0]['nom']) ?></td>
+                            <td><?= htmlspecialchars((string) $logs[0]['date']) ?></td>
+                            <td><?= htmlspecialchars((string) $logs[0]['appelsKO']) ?></td>
+                            <td><?= htmlspecialchars((string) $logs[0]['timeouts']) ?></td>
+                            <td><?= htmlspecialchars($stats[0]['stats_totales']['appelsKO'] ?? '0') ?></td>
+                            <td><?= htmlspecialchars($stats[0]['stats_totales']['timeouts'] ?? '0') ?></td>
                         </tr>
-                        </thead>
-                        <tbody>
-                        <?php foreach ($logs as $log): ?>
-                            <tr>
-                                <td><?= htmlspecialchars((string) $log['id']) ?></td>
-                                <td><?= htmlspecialchars((string) $log['nom']) ?></td>
-                                <td><?= htmlspecialchars((string) $log['date']) ?></td>
-                                <td><?= htmlspecialchars((string) $log['appelsKO']) ?></td>
-                                <td><?= htmlspecialchars((string) $log['timeouts']) ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                <?php else: ?>
-                    <p class="text-center">Aucun log à afficher.</p>
-                <?php endif; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="7" class="text-center">Aucune statistique à afficher.</td>
+                        </tr>
+                    <?php endif; ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-    <footer class="text-center">
-        <h2 id="footer" class="alert alert-warning">Giurgiuman Alexandre, Barthelemy Maxence, Gamet Dylan</h2>
-    </footer>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

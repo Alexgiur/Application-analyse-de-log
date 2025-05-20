@@ -7,12 +7,12 @@ class loueurDAO extends connexionMySQL {
         parent::__construct();
     }
 
-    public function connecteUtilisateur($idLoueur, $nom, $mot_de_passe) {
+    public function connecteUtilisateur($id, $nom) {
         $res = null;
         if ($this->bdd) {
-            $sql = 'SELECT * FROM loueur WHERE idLoueur = ? AND nom = ? AND mot_de_passe = ?';
+            $sql = 'SELECT * FROM loueur WHERE idLoueur = ? AND nom = ?';
             $result = $this->bdd->prepare($sql);
-            $result->execute( [$idLoueur, $nom, $mot_de_passe]);
+            $result->execute( [$id, $nom]);
             $data = $result->fetch(PDO::FETCH_ASSOC);
 
             if($data){
@@ -54,5 +54,12 @@ class loueurDAO extends connexionMySQL {
         $result->execute([$id]);
     }
 
-    
+    public function findById(int $id) {
+        $sql = "SELECT idLoueur as id, nom as nom, pays as pays, email as email, telephone as telephone FROM loueur WHERE idLoueur = ?";
+        $stmt = $this->getBdd()->prepare($sql);
+        $stmt->execute([$id]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
+
+    }
 }

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63032531-c14a-43c4-9ac5-3d37c439b61d" name="Changes" comment="" />
+    <list default="true" id="ef092421-6eab-4d54-a21d-406babb7b171" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,11 +16,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/af362e40-bf16-48a4-8bf0-0fc5a1c0b139_Application-analyse-de-log.zip.139/Application-analyse-de-log/Model/DAO/LogDAO.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xampp\php\php.exe" />
   <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 8
 }</component>
-  <component name="ProjectId" id="2wRTzEgea61zHQtyIdUoon9UzjF" />
+  <component name="ProjectId" id="2xIr6EPWzEoMD1mqr0NDN6hhgt4" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -28,8 +32,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;&lt;unknown&gt;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/wamp64/www/rouletteCybersecurite&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -49,18 +52,14 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="63032531-c14a-43c4-9ac5-3d37c439b61d" name="Changes" comment="" />
-      <created>1746003647193</created>
+      <changelist id="ef092421-6eab-4d54-a21d-406babb7b171" name="Changes" comment="" />
+      <created>1747636251625</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1746003647193</updated>
-      <workItem from="1746003648388" duration="11895000" />
-      <workItem from="1746445351960" duration="5308000" />
-      <workItem from="1746519300674" duration="1745000" />
-      <workItem from="1746542211928" duration="612000" />
-      <workItem from="1746606841785" duration="592000" />
-      <workItem from="1746608304635" duration="4068000" />
-      <workItem from="1746771572431" duration="4948000" />
+      <updated>1747636251625</updated>
+      <workItem from="1747636253095" duration="5561000" />
+      <workItem from="1747646232154" duration="24308000" />
+      <workItem from="1747692147028" duration="13628000" />
     </task>
     <servers />
   </component>

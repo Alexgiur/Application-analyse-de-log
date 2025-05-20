@@ -45,18 +45,40 @@ span {
 #deco {
     margin-top: 5px;
     margin-left: 9px;
-    text-size: 10px;
 }
 
-#nomPiedDePage {
-    display: flex;
-    justify-content:center;
+#date input[type="date"] {
+    width: 194px;
 }
 
-#topPage {
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.page-wrapper {
     margin-top: -10px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .container-fluid {
     padding-top: 9px;
+    flex: 1;
+}
+
+footer {
+    margin-top: auto;
+}
+
+#side-bar {
+    position: sticky;
+    top: 0;
+    height: 87vh;
+    overflow-y: auto;
+}
+
+.menuDate {
+    width: 200px;
 }
